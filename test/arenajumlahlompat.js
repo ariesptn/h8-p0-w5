@@ -1,22 +1,24 @@
 function lompat(arena, jumlahlompat) {
-    let counter = 0;
-    for (let i = 0; i < arena.length; i++) {
+    let i = 0;
+    while (i < arena.length) {
         if (arena[i] === '_') {
-            counter++;
+            i++;
         } else if (arena[i] === 'n') {
             let counterN = 0;
             while (arena[i + counterN] === 'n') {
                 counterN++;
             }
             if (counterN > jumlahlompat) {
-                return counter;
+                return i;
             } else {
-                counter += counterN;
+                i += counterN + 1;
             }
         }
     }
-    return counter;
+    return i;
 }
 
 console.log(lompat('___n__nn__', 1));
 console.log(lompat('_nn___nnn__', 2));
+console.log(lompat('_nnn_nnnnnn____nnnnnnn__', 6))
+console.log(lompat('___nnnn_____nn___nnn__nnnnnn_', 4))
