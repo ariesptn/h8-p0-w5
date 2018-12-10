@@ -64,6 +64,7 @@
 function salaryRangeCalculator(brutoSalary, months) {
     let tax = 0;
     let bpjs = 0;
+    let resultText = '';
     if (brutoSalary >= 9000000) {
         tax = 0.04 * brutoSalary;
         bpjs = 0.05 * (brutoSalary - tax);
@@ -76,13 +77,16 @@ function salaryRangeCalculator(brutoSalary, months) {
     } else if (brutoSalary >= 1000000) {
         tax = 0;
         bpjs = 0.02 * (brutoSalary - tax);
+    } else {
+        resultText = 'Gaji anda dibawah standard perusahaan';
     }
     let salaryNett = brutoSalary - tax - bpjs;
     let totalBPJS = bpjs * months;
-    console.log('netSalary = ' + salaryNett + ', totalBPJS yang telah dibayarkan = ' + totalBPJS);
+    if (brutoSalary >= 1000000) {
+        resultText = 'netSalary = ' + salaryNett + ', totalBPJS yang telah dibayarkan = ' + totalBPJS;
+    }
+    console.log(resultText);
 }
 
 salaryRangeCalculator(5000000, 3)
 // netSalary = 4753000, totalBPJS yang telah dibayarkan = 441000
-
-
