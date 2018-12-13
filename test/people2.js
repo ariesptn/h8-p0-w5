@@ -29,12 +29,6 @@ function people2(str) {
                 return obj;
             }
             result[str[r][classIndex]].push(insertObj());
-            // result[str[r][classIndex]].push({});
-            // for (let c = 0; c < str[r].length; c++) {
-            //     result[str[r][classIndex]]
-            //     [result[str[r][classIndex]].length - 1]
-            //     [str[0][c]] = str[r][c];
-            // }
         }
     }
     return result;
