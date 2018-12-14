@@ -18,8 +18,32 @@ function vendingMoonbucks(pesanan, uang) {
     'asian-dolce': 50000
   }
   var uangKembalianTersedia = 50000
-
-  //your code here
+  const result = {
+    beverages: [],
+    change: 0,
+    keterangan: ''
+  }
+  let uangYangDimasukkan = parseInt(uang);
+  for (let i = 0; i < pesanan.length; i++) {
+    if (menu[pesanan[i]] === undefined) {
+      result.keterangan = 'beverages tidak tersedia pada vendingMoonbucks';
+      result.change = uangYangDimasukkan;
+      result.beverages = [];
+      break;
+    } else if (menu[pesanan[i]] > uang) {
+      result.keterangan = 'ada pesanan tidak terbeli';
+    } else {
+      result.beverages.push(pesanan[i]);
+      uang -= menu[pesanan[i]];
+      result.change = uang;
+    }
+  }
+  if (uangKembalianTersedia < result.change) {
+    result.beverages = [];
+    result.change = uangYangDimasukkan;
+    result.keterangan = 'uang kembalian tidak cukup'
+  }
+  return result;
 }
 
 console.log(vendingMoonbucks(['es teh tawar', 'kopi ukut'], 150000));

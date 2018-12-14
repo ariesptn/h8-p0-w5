@@ -14,7 +14,17 @@
 **/
 
 function drawTrack(players, lengthOfTrack) {
-  //your code here
+  let result = [];
+  let track = [];
+  for (let i = 0; i < lengthOfTrack; i++) {
+    track.push('');
+  }
+  for (let i = 0; i < players.length; i++) {
+    result.push([...track]);
+    let position = players[i][1] < lengthOfTrack ? players[i][1] - 1 : lengthOfTrack - 1;
+    result[result.length - 1][position] = players[i][0];
+  }
+  return result;
 }
 
 console.log(drawTrack([

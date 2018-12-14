@@ -19,9 +19,35 @@ Contoh:
   - sort()
 */
 
-function countMissingNumbers (numbers) {
-  // Code disini
+function countMissingNumbers(numbers) {
+  if (numbers.length <= 0) {
+    return "Data tidak bisa diproses";
+  }
+  bubbleSort(numbers);
+  let result = 0;
+  for (let i = 0; i < numbers.length - 1; i++) {
+    result += numbers[i + 1] - numbers[i] - 1;
+  }
+  if (result === 0) {
+    return "Tidak ada angka hilang";
+  }
+  return result;
 }
+function bubbleSort(a) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < a.length - 1; i++) {
+      if (a[i] > a[i + 1]) {
+        let temp = a[i];
+        a[i] = a[i + 1];
+        a[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+}
+
 
 console.log(countMissingNumbers([1, 5, 10, 7, 6])); // 5 angka hilang
 console.log(countMissingNumbers([10, 1])); // 8 angka hilang

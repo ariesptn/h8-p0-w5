@@ -55,7 +55,26 @@ RULES
 **/
 
 function pairPrime(num) {
-  // your code here
+  if (num.length === 0) {
+    return 0;
+  } else if (num.length === 1) {
+    return pairPrime(num + 1);
+  } else {
+    numInner = num.substring(1, num.length - 1);
+    numOuter = parseInt(num[0] + num[num.length - 1]);
+    let isPrime = true;
+    for (let i = 2; i <= numOuter / 2 + 1; i++) {
+      if (numOuter % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) {
+      return 1 + pairPrime(numInner);
+    } else {
+      return pairPrime(numInner);
+    }
+  }
 }
 
 

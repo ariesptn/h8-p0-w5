@@ -18,8 +18,25 @@ RULES:
  - DILARANG menggunakan built in function .map, .filter dan .reduce
 */
 
-function mostFavoriteActor(arr){
-	// Code hanya disini
+function mostFavoriteActor(arr) {
+	let data = {};
+	for (let i = 0; i < arr.length; i++) {
+		if (data[arr[i]] === undefined) {
+			data[arr[i]] = 1;
+		} else {
+			data[arr[i]] += 1;
+		}
+	}
+	let dataArr = [];
+	for (let s in data) {
+		dataArr.push([s, data[s]]);
+	}
+	dataArr.sort((a, b) => b[1] - a[1]);
+	let result = '';
+	for (let i = 0; i < dataArr.length; i++) {
+		result += `${dataArr[i][0]}(${dataArr[i][1]}), `;
+	}
+	return result.slice(0, result.length - 2);
 }
 
 console.log(mostFavoriteActor(['Lee Min Ho', 'Lee Min Ho', 'Lee Kwang Soo', 'Lee Min Ho', 'Lee Kwang Soo', 'Rain', 'Lee Minho']));

@@ -13,8 +13,19 @@
 	['dua', 'empat']
 */
 
-function arrayPanjangGanjil(datas){
-	//your code here
+function arrayPanjangGanjil(datas) {
+	if (datas.length === 0) {
+		return [];
+	} else {
+		if (datas[0].length % 2 === 0) {
+			datas.splice(0, 1);
+			return arrayPanjangGanjil(datas);
+		} else {
+			let tmp = [datas[0]];
+			datas.splice(0, 1);
+			return tmp.concat(arrayPanjangGanjil(datas));
+		}
+	}
 }
 
 console.log(arrayPanjangGanjil(['satu', 'dua', 'tiga', 'empat'])); // ['dua', 'empat']

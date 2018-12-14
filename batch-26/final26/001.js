@@ -10,8 +10,28 @@
 
 **/
 
-function findRowPrime(n){
-  //write your code here
+function findRowPrime(n) {
+  let counter = 0;
+  let primeCounter = 0;
+  let current = 0;
+  while (current < n) {
+    if (isPrime(counter)) {
+      primeCounter += 1;
+      current = counter;
+    }
+    counter++;
+  }
+  return primeCounter;
+}
+function isPrime(n) {
+  if (n <= 1) { return false; }
+  else if (n === 2) { return true; }
+  for (let i = 2; i <= n / 2 + 1; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 console.log(findRowPrime(7)); //4
