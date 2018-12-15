@@ -31,8 +31,36 @@ Output: 54
 */
 
 function numberCruncherEx(numberArr) {
-
+  numberArr.unshift(0);
+  numberArr.push(0);
+  let nextArr = [];
+  for (let i = 0; i < numberArr.length - 2; i++) {
+    nextArr.push(numberArr[i] + numberArr[i + 1] + numberArr[i + 2]);
+  }
+  let oddNumbers = [];
+  for (let n of nextArr) {
+    if (n % 2 !== 0) {
+      let exists = false;
+      for (let on of oddNumbers) {
+        if (n === on) {
+          exists = true;
+          break;
+        }
+      }
+      if (!exists) {
+        oddNumbers.push(n);
+      }
+    }
+  }
+  let result = 0;
+  for (let n of oddNumbers) {
+    result += n;
+  }
+  return result;
 }
-  
-  console.log(numberCruncherEx([7, 1, 0, 4])); // 1
-  console.log(numberCruncherEx([2, 3, 1, 4, 1, 5, 0, 3])); // 8
+
+console.log(numberCruncherEx([7, 1, 0, 4])); // 1
+console.log(numberCruncherEx([2, 3, 1, 4, 1, 5, 0, 3])); // 8
+console.log(numberCruncherEx([2, 5, 1, 3])); //16
+console.log(numberCruncherEx([2, 3, 1, 4, 1, 5, 0, 3])); //8
+console.log(numberCruncherEx([3, 6, 8, 9, 1, 2, 3])); //54

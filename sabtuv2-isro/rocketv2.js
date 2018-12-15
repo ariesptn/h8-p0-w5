@@ -9,9 +9,20 @@
     - input harus bernilai ganjil , jika tidak ganjil maka " invalid input "
 */
 
-function scotlandFlag(param)
-{
-    // yout code here 
+function scotlandFlag(param) {
+    let result = '';
+    for (let i = 0; i < param; i++) {
+        result += "'";
+        for (let j = 0; j < param; j++) {
+            if (j === i || j === param - i - 1) {
+                result += '*';
+            } else {
+                result += ' ';
+            }
+        }
+        result += "'\n";
+    }
+    return result.substring(0, result.length - 1);
 }
 
 console.log(scotlandFlag(5))

@@ -12,8 +12,17 @@ RULES:
 - Dilarang menggunakan REG EX
 - WAJIB MENGGUNAKAN PSEUDOCODE 
 */
-function bigIt(array){
-
+function bigIt(array) {
+    let arrSplit = array.split(' ');
+    let arrResult = [];
+    let result = '';
+    for (let i = 0; i < arrSplit.length; i++) {
+        let text = '';
+        text += arrSplit[i].substring(1) + arrSplit[i][0];
+        text += 'ay';
+        arrResult.push(text);
+    }
+    return arrResult.join(' ');
 }
 
 console.log(bigIt('Big latin is cool')); //'igBay atinlay siay oolcay'

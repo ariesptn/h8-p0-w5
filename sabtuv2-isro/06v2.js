@@ -14,8 +14,17 @@
 	['dua', 'empat']
 */
 
-function arrayPanjangGanjil(datas){
-	//your code here
+function arrayPanjangGanjil(datas) {
+	if (datas.length < 1) {
+		return [];
+	} else if (datas[0].length % 2 === 0) {
+		datas.shift()
+		return arrayPanjangGanjil(datas);
+	} else {
+		let first = [datas[0]];
+		datas.shift()
+		return first.concat(arrayPanjangGanjil(datas));
+	}
 }
 
 console.log(arrayPanjangGanjil(['satu', 'dua', 'tiga', 'empat'])); // ['dua', 'empat']
