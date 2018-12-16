@@ -36,7 +36,23 @@ NOTE & RULES:
 
 
 function squareNumber(num) {
-  // your code here
+  if(num<3){
+    return 'Minimal input adalah 3'
+  }
+  let counter = 1
+  let result=[]
+  for(let i=0;i<num;i++){
+    result.push([])
+    for(let j=0;j<num;j++){
+      if(i%2===0){
+        result[result.length-1].push(counter)
+      }else{
+        result[result.length-1].unshift(counter)
+      }
+      counter++
+    }
+  }
+  return result
 }
 
 console.log(squareNumber(3));

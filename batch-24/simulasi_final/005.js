@@ -11,10 +11,17 @@ Contoh input dan output bisa dilihat di test case.
 
 */
 
-function trainSeating (penumpang) {
-  // your code here
+function trainSeating(penumpang) {
+  let result = {}
+  for (let o of penumpang) {
+    result[o.gerbong] = result[o.gerbong] || []
+    result[o.gerbong].push({
+      nama:o.nama,
+      seat:o.seat
+    })
+  }
+  return result
 }
-
 
 console.log(trainSeating([
   { nama: "Awtian", gerbong: "VVIP", seat: 'A1' },

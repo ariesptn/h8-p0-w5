@@ -30,7 +30,25 @@ RULES:
 */
 
 function findOutlier(array) {
-  // your code here
+  if (array.length < 1) {
+    return 'no number'
+  }
+  let odds = []
+  let evens = []
+  for (let n of array) {
+    if (n % 2 === 0) {
+      evens.push(n)
+    } else {
+      odds.push(n)
+    }
+  }
+  if (odds.length === 1) {
+    return odds[0]
+  } else if (evens.length === 1) {
+    return evens[0]
+  } else {
+    return 'no outliers'
+  }
 }
 
 console.log(findOutlier([2, 4, 6, 100, 4, 11, 8, 50])); // 11

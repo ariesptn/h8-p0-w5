@@ -26,9 +26,26 @@
 
 */
 function encrypt(input) {
-  // your code here
-  
-  
+  let symbols = '!@#$%^&*()-+1234567890[]{}'
+  let result = ''
+  for (let i = 0; i < input.length; i++) {
+    let index = findIndex(input[i])
+    if (index > -1) {
+      result += symbols[index]
+    } else {
+      result += input[i]
+    }
+  }
+  return result
+}
+function findIndex(letter) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  for (let i = 0; i < alphabet.length; i++) {
+    if (alphabet[i] === letter) {
+      return i
+    }
+  }
+  return -1
 }
 
 console.log(encrypt('dimitri')) // $(1(86(

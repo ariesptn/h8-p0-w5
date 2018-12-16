@@ -18,8 +18,17 @@ RULES
 */
 
 function tukarBesarKecil(kalimat) {
-  // your code here
-  
+  if(kalimat===''){
+    return ''
+  }else if(kalimat.codePointAt(0)>=97 && kalimat.codePointAt(0)<=122){
+    let character=String.fromCodePoint(kalimat.codePointAt(0)-32)
+    return character + tukarBesarKecil(kalimat.substring(1))
+  }else if(kalimat.codePointAt(0)>=65 && kalimat.codePointAt(0)<=90){
+    let character=String.fromCodePoint(kalimat.codePointAt(0)+32)
+    return character + tukarBesarKecil(kalimat.substring(1))
+  }else{
+    return kalimat[0] + tukarBesarKecil(kalimat.substring(1))
+  }
 }
 
 // TEST CASES

@@ -31,7 +31,21 @@ Contoh untuk input 10:
 */
 
 function domino(size) {
-  // your code here
+  let result = ''
+  for (let i = 0; i < size; i++) {
+    result += '#'
+    for (let j = 0; j < size - 2; j++) {
+      if (i === 0 || i === size - 1 || i === Math.floor(size / 2) || i === size - Math.floor(size / 2) - 1) {
+        result += '#'
+      } else if ((i === Math.floor(size / 4) || i === Math.floor(size * 3 / 4)) && j === Math.floor(size / 2) - 1) {
+        result += Math.floor(Math.random() * 6) + 1
+      } else {
+        result += ' '
+      }
+    }
+    result += '#\n'
+  }
+  console.log(result)
 }
 
 domino(9);

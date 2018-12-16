@@ -53,8 +53,41 @@ RULES
 */
 
 function numberPrimeCruncher(num) {
-    
-    
+    if (num < 2) {
+        return []
+    }
+    let primes = [2]
+    let number = 3
+    while (primes[primes.length - 1] <= num) {
+        if (isPrime(number)) {
+            primes.push(number)
+        }
+        number++
+    }
+    primes.pop()
+    let total = 0
+    for (let n of primes) {
+        total += n
+    }
+    let average = total / primes.length
+    let result = []
+    for (let n of primes) {
+        if (n > average) {
+            result.push(n)
+        }
+    }
+    return result
+}
+
+function isPrime(n) {
+    if (n < 2) { return false }
+    if (n === 2) { return true }
+    for (let i = 2; i < n / 2 + 1; i++) {
+        if (n % i === 0) {
+            return false
+        }
+    }
+    return true
 }
 
 console.log(numberPrimeCruncher(10)); // [ 5, 7 ]
