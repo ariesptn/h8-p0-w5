@@ -70,23 +70,19 @@ RULES:
 
 
 function cariIndex(numbers, numSearch, yangKe) {
-  // your code here
-
-    counter = 0
-
-    for (i = 0; i < numbers.length; i++) {
-        if (numbers[i] == numSearch) {
-            counter++
-            if (counter == yangKe) {
-                return i
-            }
-        } 
-    } if (counter < yangKe) {
-        return -1
+  let counter = 0
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === numSearch) {
+      counter++
+      if (counter === yangKe) {
+        return i
+      }
     }
+  }
+  return -1
 }
 
-console.log(cariIndex([ 4, 5, 1, 2, 4, 5, 6, 4, 4 ], 4, 3)); // 7
-console.log(cariIndex([ 2, 1, 1, 5, 6, 4 ], 5, 1)); // 3
-console.log(cariIndex([ 2, 1, 1, 5 ], 2, 3)); // -1
+console.log(cariIndex([4, 5, 1, 2, 4, 5, 6, 4, 4], 4, 3)); // 7
+console.log(cariIndex([2, 1, 1, 5, 6, 4], 5, 1)); // 3
+console.log(cariIndex([2, 1, 1, 5], 2, 3)); // -1
 console.log(cariIndex([], 3, 4)); //-1

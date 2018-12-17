@@ -29,10 +29,15 @@
 
 
 function tambahDash(str) {
-  //your code here
-
-
-
+  let result = ''
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] % 2 === 1 && str[i + 1] % 2 === 1 && str[i + 1] !== undefined) {
+      result += str[i] + '-'
+    } else {
+      result += str[i]
+    }
+  }
+  return result
 }
 
 console.log(tambahDash('454793')); // '4547-9-3'

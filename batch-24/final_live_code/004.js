@@ -18,7 +18,29 @@
 
 **/
 function halfTriangle(height, direction) {
-  // your code here
+  if (height < 4) {
+    return 'minimum height is 4'
+  }
+  let result = []
+  for (let i = 0; i < height; i++) {
+    result.push([])
+    for (let j = 0; j < height; j++) {
+      if (direction === 'up') {
+        if (j <= i - 1) {
+          result[i].push(' ')
+        } else {
+          result[i].push((j + 1).toString())
+        }
+      } else if (direction === 'down') {
+        if (j <= i) {
+          result[i].push((j + 1).toString())
+        } else {
+          result[i].push(' ')
+        }
+      }
+    }
+  }
+  return result;
 }
 
 console.log(halfTriangle(5, 'up'));
@@ -50,11 +72,3 @@ console.log(halfTriangle(4, 'down'));
 //   [ '1', '2', ' ', ' ' ],
 //   [ '1', '2', '3', ' ' ],
 //   [ '1', '2', '3', '4' ] ]
-
-var row = 5
-var baris = ''
-
-for (i = 0; i < row; i++) {
-  baris = baris + '*'
-  console.log(baris)
-} 

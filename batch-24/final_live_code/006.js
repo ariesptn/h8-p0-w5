@@ -54,7 +54,16 @@ RULES
 **/
 
 function oddPairFirstLast(num) {
-  // your code here
+  let numStr = num.toString()
+  if (num < 1) {
+    return 0
+  } else if (num < 10) {
+    return oddPairFirstLast(num * 10 + 1)
+  } else if (parseInt(numStr[0] + numStr[numStr.length - 1]) % 2 === 1) {
+    return parseInt(numStr[0] + numStr[numStr.length - 1]) + oddPairFirstLast(numStr.substring(1, numStr.length - 1) * 1)
+  } else {
+    return oddPairFirstLast(numStr.substring(1, numStr.length - 1) * 1)
+  }
 }
 
 console.log(oddPairFirstLast(2345))// 25

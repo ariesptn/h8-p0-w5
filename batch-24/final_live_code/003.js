@@ -56,34 +56,31 @@ RULES:
 **/
 
 function faktorPrima(num) {
-  // your code here
-  var primeFactors = []
-    
-  for (var i = 2; i <= num; i++) {
-      while (num % i == 0) {
-          primeFactors.push(i)
-          num = num / i
-      }
+  let counter = 2
+  let factors = {}
+  while (counter <= num) {
+    if (isPrime(counter) && num % counter === 0) {
+      factors[counter] = factors[counter] + 1 || 1
+      num /= counter
+    } else {
+      counter++
+    }
   }
-
-  // return primeFactors;
-
-  var arr = []
-  // var str = ''
-
-  for (j = 0; j < primeFactors.length; j++) {
-
-      var counter = 0
-
-      for (k = 0; k < primeFactors.length; k++) {
-        // console.log(j + ' ' + k + ' ' + primeFactors[j] + ' ' + primeFactors[k])
-
-        if (primeFactors[j] == primeFactors[k]) {
-            counter++
-        }
-      } arr.push(primeFactors[j] + ' pangkat ' + counter)
+  let result = ''
+  for (k in factors) {
+    result += k + ' pangkat ' + factors[k] + ', '
   }
-  return arr
+  return result.substring(0, result.length - 2)
+}
+function isPrime(n) {
+  if (n < 2) { return false }
+  else if (n === 2) { return true }
+  for (let i = 2; i < n / 2 + 1; i++) {
+    if (n % i === 0) {
+      return false
+    }
+  }
+  return true
 }
 
 console.log(faktorPrima(90)); // 2 pangkat 1, 3 pangkat 2, 5 pangkat 1

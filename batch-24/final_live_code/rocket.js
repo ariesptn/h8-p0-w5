@@ -13,9 +13,32 @@
 **/
 
 function hourglass(num) {
-  // your code here
+  if (num < 3) {
+    return 'Minimum parameter is 3'
+  }
+  let result = ''
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num * 2 - 1; j++) {
+      if (j >= i && j < num * 2 - 1 - i) {
+        result += '#'
+      } else {
+        result += ' '
+      }
+    }
+    result += '\n'
+  }
+  for (let i = num - 2; i >= 0; i--) {
+    for (let j = 0; j < num * 2 - 1; j++) {
+      if (j >= i && j < num * 2 - 1 - i) {
+        result += '#'
+      } else {
+        result += ' '
+      }
+    }
+    result += '\n'
+  }
+  return result
 }
-
 console.log(hourglass(2)); //Minimum parameter is 3
 
 console.log(hourglass(4));

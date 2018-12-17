@@ -60,40 +60,28 @@
  */
 
 function getGuildMemberInfo(members) {
-    // your code here
-
-    var obj = {}
-    obj.totalMember = 0
-
-    obj.averageLevel = 0
-
-    obj.knight = []
-    obj.priest = []
-    obj.hunter = []
-
-    var totalLv = 0
-
-    for (i = 0; i < members.length; i++) {
-
-        obj.totalMember++
-        totalLv = totalLv + members[i].level
-
-        if (members[i].class == 'Knight' && members[i].level >= ave) {
-            obj.knight.push(members[i])
-            delete members[i]['class']
-        } else if (members[i].class == 'Priest' && members[i].level >= ave) {
-            obj.priest.push(members[i])
-            delete members[i]['class']
-        } else if (members[i].class == 'Hunter' && members[i].level >= ave) {
-            obj.hunter.push(members[i])
-            delete members[i]['class']
-        }
-        
-        var ave = totalLv/obj.totalMember
-        obj.averageLevel = ave
-    } 
-
-  return obj
+  if (members.length < 1) {
+    return 'invalid data'
+  }
+  let result = {
+    totalMember: members.length,
+    averageLevel: 0
+  }
+  let levelTotal = 0
+  for (o of members) {
+    levelTotal += o.level
+  }
+  result.averageLevel = Math.floor(levelTotal / members.length)
+  for (o of members) {
+    if (o.level >= result.averageLevel) {
+      result[o.class] = result[o.class] || []
+      result[o.class].push({
+        name: o.name,
+        level: o.level
+      })
+    }
+  }
+  return result
 }
 
 console.log(getGuildMemberInfo([
